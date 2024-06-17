@@ -1,5 +1,6 @@
 import { WebSocketTransport } from './websocket.js'
 import { MapUpdater, DataLayerUpdater, FeatureUpdater } from './updaters.js'
+import HybridLogicalClock from './hlc.js'
 
 export class SyncEngine {
   constructor(map) {
@@ -9,6 +10,8 @@ export class SyncEngine {
       datalayer: new DataLayerUpdater(map),
     }
     this.transport = undefined
+    this._operations = new Array()
+    this._hlc = new HybridLogicalClock()
   }
 
   async authenticate(tokenURI, webSocketURI, server) {
@@ -45,6 +48,9 @@ export class SyncEngine {
   }
 
   _send(message) {
+    message.hlc = this._hlc.tick()
+    this._operations.push(message)
+
     if (this.transport) {
       this.transport.send('operation', message)
     }

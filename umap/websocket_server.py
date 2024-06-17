@@ -2,7 +2,7 @@
 
 import asyncio
 from collections import defaultdict
-from typing import Literal, Optional
+from typing import Literal, Optional, Union
 
 import websockets
 from django.conf import settings
@@ -29,6 +29,17 @@ class OperationMessage(BaseModel):
     subject: str = Literal["map", "layer", "feature"]
     metadata: Optional[dict] = None
     key: Optional[str] = None
+
+
+class PeerMessage(BaseModel):
+    kind: str = "peermessage"
+    sender: str
+    recipient: str
+    message: str
+
+
+class MetaMessage(BaseModel):
+    message: Union[PeerMessage, OperationMessage]
 
 
 async def join_and_listen(
