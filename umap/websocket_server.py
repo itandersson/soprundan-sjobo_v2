@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import asyncio
+import random
 from collections import defaultdict
 from typing import Literal, Optional, Union
 
@@ -18,7 +19,7 @@ from umap.models import Map, User  # NOQA
 CONNECTIONS = defaultdict(set)
 
 
-class JoinMessage(BaseModel):
+class JoinRequest(BaseModel):
     kind: str = "join"
     token: str
 
@@ -38,14 +39,22 @@ class PeerMessage(BaseModel):
     message: str
 
 
-class MetaMessage(BaseModel):
-    message: Union[PeerMessage, OperationMessage]
+class SignalingRequest(BaseModel):
+    kind: str = "signaling"
+
+
+class SignalingResponse(BaseModel):
+    kind: str = "signaling"
+
+
+class IncomingMessage(BaseModel):
+    message: Union[PeerMessage, OperationMessage, SignalingRequest]
 
 
 async def join_and_listen(
     map_id: int, permissions: list, user: str | int, websocket: WebSocketClientProtocol
 ):
-    """Join a "room" whith other connected peers.
+    """Join a "room" with other connected peers.
 
     New messages will be broadcasted to other connected peers.
     """
@@ -56,10 +65,31 @@ async def join_and_listen(
             # recompute the peers-list at the time of message-sending.
             # as doing so beforehand would miss new connections
             peers = CONNECTIONS[map_id] - {websocket}
-            # Only relay valid "operation" messages
             try:
-                OperationMessage.model_validate_json(raw_message)
-                websockets.broadcast(peers, raw_message)
+                meta_message = IncomingMessage.model_validate_json(raw_message)
+
+                if isinstance(meta_message.message, OperationMessage):
+                    websockets.broadcast(peers, raw_message)
+
+                elif isinstance(meta_message.message, PeerMessage):
+                    peer = CONNECTIONS.get(meta_message.recipient)
+                    if peer:
+                        await peer.send(raw_message)
+
+                elif isinstance(meta_message.message, SignalingRequest):
+                    target = meta_message.message.target
+                    peer = random.choice(list(CONNECTIONS[map_id] - {websocket}))
+                    if peer:
+                        response = {
+                            "kind": "signaling_response",
+                            "peer": peer,
+                        }
+                    else:
+                        response = {
+                            "kind": "signaling_response",
+                            "status": "not_found",
+                        }
+                    await websocket.send(response)
             except ValidationError as e:
                 error = f"An error occurred when receiving this message: {raw_message}"
                 print(error, e)
@@ -75,7 +105,7 @@ async def handler(websocket):
     raw_message = await websocket.recv()
 
     # The first event should always be 'join'
-    message: JoinMessage = JoinMessage.model_validate_json(raw_message)
+    message: JoinRequest = JoinRequest.model_validate_json(raw_message)
     signed = TimestampSigner().unsign_object(message.token, max_age=30)
     user, map_id, permissions = signed.values()
 
