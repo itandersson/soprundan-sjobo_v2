@@ -1,6 +1,6 @@
 /**
- * This file contains the updaters: classes that are able to convert messages
- * received from another party (or the server) to changes on the map.
+ * Updaters are classes able to convert messages
+ * received from other peers (or from the server) to changes on the map.
  */
 
 class BaseUpdater {

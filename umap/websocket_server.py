@@ -1,106 +1,166 @@
 #!/usr/bin/env python
 
 import asyncio
-import random
+import json
+import uuid
 from collections import defaultdict
 from typing import Literal, Optional, Union
 
 import websockets
 from django.conf import settings
 from django.core.signing import TimestampSigner
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel, Field, RootModel, ValidationError
 from websockets import WebSocketClientProtocol
 from websockets.server import serve
 
 from umap.models import Map, User  # NOQA
 
+
+class Connections:
+    def __init__(self):
+        self._connections: set = set()
+        self._ids: dict[WebSocketClientProtocol, str] = dict()
+
+    def join(self, websocket: WebSocketClientProtocol):
+        self._connections.add(websocket)
+        _id = str(uuid.uuid4())
+        self._ids[websocket] = _id
+        return _id
+
+    def leave(self, websocket: WebSocketClientProtocol):
+        self._connections.remove(websocket)
+        del self._ids[websocket]
+
+    def get(self, id):
+        # use an iterator to stop iterating as soon as we found
+        return next(k for k, v in self._ids.items() if v == id)
+
+    def get_id(self, websocket: WebSocketClientProtocol):
+        return self._ids[websocket]
+
+    def get_other_peers(self, websocket):
+        return self._connections - {websocket}
+
+    def get_all_peers(self):
+        return self._connections
+
+
 # Contains the list of websocket connections handled by this process.
 # It's a mapping of map_id to a set of the active websocket connections
-CONNECTIONS = defaultdict(set)
+CONNECTIONS: defaultdict[Connections] = defaultdict(Connections)
 
 
 class JoinRequest(BaseModel):
-    kind: str = "join"
+    kind: Literal["join"] = "join"
     token: str
 
 
 class OperationMessage(BaseModel):
-    kind: str = "operation"
-    verb: str = Literal["upsert", "update", "delete"]
-    subject: str = Literal["map", "layer", "feature"]
+    """Message sent from one peer to all the others"""
+
+    kind: Literal["operation"] = "operation"
+    verb: Literal["upsert", "update", "delete"]
+    subject: Literal["map", "layer", "feature"]
     metadata: Optional[dict] = None
     key: Optional[str] = None
 
 
 class PeerMessage(BaseModel):
-    kind: str = "peermessage"
+    """Message sent from a specific peer to a specific one"""
+
+    kind: Literal["peermessage"] = "peermessage"
     sender: str
     recipient: str
-    message: str
+    # The message can be whatever the peers want. It's not checked by the server.
+    message: dict
 
 
-class SignalingRequest(BaseModel):
-    kind: str = "signaling"
+class ServerRequest(BaseModel):
+    """A request directe towards the server"""
+
+    kind: Literal["server"] = "server"
+    action: Literal["peerinfo"]
 
 
-class SignalingResponse(BaseModel):
-    kind: str = "signaling"
+class Request(RootModel):
+    """Any message coming from the websocket should be one of these, and will be rejected otherwise."""
+
+    root: Union[ServerRequest, PeerMessage, OperationMessage] = Field(
+        discriminator="kind"
+    )
 
 
-class IncomingMessage(BaseModel):
-    message: Union[PeerMessage, OperationMessage, SignalingRequest]
+class JoinResponse(BaseModel):
+    """Server response containing the list of peers"""
+
+    kind: Literal["join-response"] = "join-response"
+    peers: list
+    uuid: str
+
+
+class PeerInfoResponse(BaseModel):
+    kind: Literal["peerinfo"] = "peerinfo"
+    peers: list
 
 
 async def join_and_listen(
     map_id: int, permissions: list, user: str | int, websocket: WebSocketClientProtocol
 ):
-    """Join a "room" with other connected peers.
-
-    New messages will be broadcasted to other connected peers.
-    """
+    """Join a "room" with other connected peers, and wait for messages."""
     print(f"{user} joined room #{map_id}")
-    CONNECTIONS[map_id].add(websocket)
+    connections: Connections = CONNECTIONS[map_id]
+    _id: str = connections.join(websocket)
+
+    # Assign an ID to the joining peer and return it the list of connected peers.
+    peers = [connections.get_id(p) for p in connections.get_all_peers()]
+    response = JoinResponse(uuid=_id, peers=peers)
+    await websocket.send(response.model_dump_json())
+
+    # Notify all other peers of the new list of connected peers.
+    message = PeerInfoResponse(peers=peers)
+    websockets.broadcast(
+        connections.get_other_peers(websocket), message.model_dump_json()
+    )
+
     try:
         async for raw_message in websocket:
             # recompute the peers-list at the time of message-sending.
             # as doing so beforehand would miss new connections
-            peers = CONNECTIONS[map_id] - {websocket}
+            peers = connections.get_other_peers(websocket)
             try:
-                meta_message = IncomingMessage.model_validate_json(raw_message)
-
-                if isinstance(meta_message.message, OperationMessage):
-                    websockets.broadcast(peers, raw_message)
-
-                elif isinstance(meta_message.message, PeerMessage):
-                    peer = CONNECTIONS.get(meta_message.recipient)
-                    if peer:
-                        await peer.send(raw_message)
-
-                elif isinstance(meta_message.message, SignalingRequest):
-                    target = meta_message.message.target
-                    peer = random.choice(list(CONNECTIONS[map_id] - {websocket}))
-                    if peer:
-                        response = {
-                            "kind": "signaling_response",
-                            "peer": peer,
-                        }
-                    else:
-                        response = {
-                            "kind": "signaling_response",
-                            "status": "not_found",
-                        }
-                    await websocket.send(response)
+                incoming = Request.model_validate_json(raw_message)
             except ValidationError as e:
-                error = f"An error occurred when receiving this message: {raw_message}"
+                error = f"An error occurred when receiving the following message: {raw_message}"
                 print(error, e)
+            else:
+                match incoming.root:
+                    # Broadcast all operation messages to connected peers
+                    case OperationMessage():
+                        websockets.broadcast(peers, raw_message)
+
+                    # Send peer messages to the proper peer
+                    case PeerMessage(recipient=_id):
+                        peer = connections.get(_id)
+                        if peer:
+                            await peer.send(raw_message)
+
     finally:
-        CONNECTIONS[map_id].remove(websocket)
+        # On disconnect, remove the connection from the pool
+        connections.leave(websocket)
+
+        # TODO: refactor this in a separate method.
+        # Notify all other peers of the new list of connected peers.
+        peers = [connections.get_id(p) for p in connections.get_all_peers()]
+        message = PeerInfoResponse(peers=peers)
+        websockets.broadcast(
+            connections.get_other_peers(websocket), message.model_dump_json()
+        )
 
 
 async def handler(websocket):
     """Main WebSocket handler.
 
-    If permissions are granted, let the peer enter a room.
+    Check if the permission is granted and let the peer enter a room.
     """
     raw_message = await websocket.recv()
 
@@ -114,7 +174,18 @@ async def handler(websocket):
         await join_and_listen(map_id, permissions, user, websocket)
 
 
-def run(host, port):
+def run(host: str, port: int):
+    # TODO: put this in the tests
+
+    server = Request.model_validate(dict(kind="server", action="peerinfo")).root
+    assert type(server) is ServerRequest
+
+    operation = Request.model_validate(
+        dict(kind="operation", verb="upsert", subject="map", metadata={}, key="key")
+    ).root
+
+    assert type(operation) is OperationMessage
+
     if not settings.WEBSOCKET_ENABLED:
         msg = (
             "WEBSOCKET_ENABLED should be set to True to run the WebSocket Server. "

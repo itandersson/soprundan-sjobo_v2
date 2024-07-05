@@ -1,11 +1,7 @@
 /**
  * This is an implementation of a Hybrid Logical Clock (HLC).
  *
- * HLCs are mechanisms to order operations consistently in
- * distributed systems.
- * 
- * You can interact with like this:
- * 
+ * HLCs are used to order operations consistently in distributed systems.
  */
 export default class HybridLogicalClock {
 
@@ -25,16 +21,25 @@ export default class HybridLogicalClock {
     return `${walltime}:${nn}:${id}`
   }
 
+  /**
+   * Parse a serialized time and return a JS object.
+   * @param string raw 
+   * @returns object
+   */
   parse(raw) {
     let [walltime, nn, id] = raw.split(':')
     return { walltime, nn, id }
   }
 
   /**
-   * Increment the counter.
+   * Increment the current clock by one tick.
    * 
    * - If the current time is greater than the known one, increment it.
    * - Otherwise, increment the `nn` counter by 1.
+   * 
+   * This allows each tick to be different from each other.
+   * 
+   * @returns a serialized clock
    */
   tick() {
     // Copy the current value of the hlc to avoid concurrency issues
@@ -54,12 +59,15 @@ export default class HybridLogicalClock {
   }
 
   /**
-   * Receive a remote clock info, and decide what to do with it.
+   * Receive a remote clock info, and update the local clock.
    *
-   * - If the current time is greater than both local and remote wall time, update it.
-   * - If the current time is the same, increment max (local, remote) `nn` counter by 1.
+   * - If the current wall time is greater than both local and remote wall time, use the local one.
+   * - If the current wall time is the same, increment max (local, remote) `nn` counter by 1.
    * - If remote time is greater, keep the remote time and increment `nn`
    * - Otherwise, keep local values and increment `nn`
+   * 
+   * This allows to take into account clock drifting, when clocks on different peers are getting
+   * out of sync.
    **/
   receive(remoteRaw) {
     const remote = this.parse(remoteRaw)
