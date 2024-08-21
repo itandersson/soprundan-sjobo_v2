@@ -18,6 +18,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth import logout as do_logout
+from django.contrib.auth.models import Group
 from django.contrib.gis.measure import D
 from django.contrib.postgres.search import SearchQuery, SearchVector
 from django.contrib.staticfiles.storage import staticfiles_storage
@@ -60,6 +61,7 @@ from .forms import (
     DataLayerForm,
     DataLayerPermissionsForm,
     FlatErrorList,
+    GroupForm,
     MapSettingsForm,
     SendLinkForm,
     UpdateMapPermissionsForm,
@@ -188,6 +190,70 @@ class About(Home):
 about = About.as_view()
 
 
+class GroupNew(CreateView):
+    model = Group
+    fields = ["name"]
+    success_url = reverse_lazy("user_groups")
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.request.user.groups.add(self.object)
+        self.request.user.save()
+        return response
+
+
+class GroupUpdate(UpdateView):
+    model = Group
+    form_class = GroupForm
+    success_url = reverse_lazy("user_groups")
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial["members"] = self.object.user_set.all()
+        return initial
+
+    def form_valid(self, form):
+        actual = self.object.user_set.all()
+        wanted = form.cleaned_data["members"]
+        for user in wanted:
+            if user not in actual:
+                user.groups.add(self.object)
+                user.save()
+        for user in actual:
+            if user not in wanted:
+                user.groups.remove(self.object)
+                user.save()
+        return super().form_valid(form)
+
+
+class GroupDelete(DeleteView):
+    model = Group
+    success_url = reverse_lazy("user_groups")
+
+    def form_valid(self, form):
+        if self.object.user_set.count() > 1:
+            return HttpResponseBadRequest(
+                _("Cannot delete a group with more than one member")
+            )
+        messages.info(
+            self.request,
+            _("Group “%(name)s” has been deleted") % {"name": self.object.name},
+        )
+        return super().form_valid(form)
+
+
+class UserGroups(DetailView):
+    model = User
+    template_name = "umap/user_groups.html"
+
+    def get_object(self):
+        return self.get_queryset().get(pk=self.request.user.pk)
+
+    def get_context_data(self, **kwargs):
+        kwargs.update({"groups": self.object.groups.all()})
+        return super().get_context_data(**kwargs)
+
+
 class UserProfile(UpdateView):
     model = User
     form_class = UserProfileForm
@@ -247,6 +313,24 @@ class UserStars(UserMaps):
 user_stars = UserStars.as_view()
 
 
+class GroupMaps(PaginatorMixin, DetailView):
+    model = Group
+    list_template_name = "umap/map_list.html"
+    context_object_name = "current_group"
+
+    def get_maps(self):
+        return Map.public.filter(group=self.object).order_by("-modified_at")
+
+    def get_context_data(self, **kwargs):
+        kwargs.update(
+            {"maps": self.paginate(self.get_maps(), settings.UMAP_MAPS_PER_PAGE)}
+        )
+        return super().get_context_data(**kwargs)
+
+
+group_maps = GroupMaps.as_view()
+
+
 class SearchMixin:
     def get_search_queryset(self, **kwargs):
         q = self.request.GET.get("q")
@@ -293,7 +377,12 @@ class UserDashboard(PaginatorMixin, DetailView, SearchMixin):
 
     def get_maps(self):
         qs = self.get_search_queryset() or Map.objects.all()
-        qs = qs.filter(owner=self.object).union(qs.filter(editors=self.object))
+        groups = self.object.groups.all()
+        qs = (
+            qs.filter(owner=self.object)
+            .union(qs.filter(editors=self.object))
+            .union(qs.filter(group__in=groups))
+        )
         return qs.order_by("-modified_at")
 
     def get_context_data(self, **kwargs):
@@ -459,14 +548,16 @@ def simple_json_response(**kwargs):
 class SessionMixin:
     def get_user_data(self):
         data = {}
+        user = self.request.user
         if hasattr(self, "object"):
-            data["is_owner"] = self.object.is_owner(self.request.user, self.request)
-        if self.request.user.is_anonymous:
+            data["is_owner"] = self.object.is_owner(user, self.request)
+        if user.is_anonymous:
             return data
         return {
-            "id": self.request.user.pk,
+            "id": user.pk,
             "name": str(self.request.user),
             "url": reverse("user_dashboard"),
+            "groups": [group.get_metadata() for group in user.groups.all()],
             **data,
         }
 
@@ -605,6 +696,8 @@ class PermissionsMixin:
                 {"id": editor.pk, "name": str(editor)}
                 for editor in self.object.editors.all()
             ]
+        if self.object.group:
+            permissions["group"] = self.object.group.get_metadata()
         if not self.object.owner and self.object.is_anonymous_owner(self.request):
             permissions["anonymous_edit_url"] = self.object.get_anonymous_edit_url()
         return permissions
@@ -669,6 +762,12 @@ class MapView(MapDetailMixin, PermissionsMixin, DetailView):
             map_settings["properties"] = {}
         map_settings["properties"]["name"] = self.object.name
         map_settings["properties"]["permissions"] = self.get_permissions()
+        author = self.object.get_author()
+        if author:
+            map_settings["properties"]["author"] = {
+                "name": str(author),
+                "url": author.get_url(),
+            }
         return map_settings
 
     def is_starred(self):

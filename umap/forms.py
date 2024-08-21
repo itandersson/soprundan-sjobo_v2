@@ -1,6 +1,7 @@
 from django import forms
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from django.contrib.gis.geos import Point
 from django.forms.utils import ErrorList
 from django.template.defaultfilters import slugify
@@ -36,7 +37,7 @@ class SendLinkForm(forms.Form):
 class UpdateMapPermissionsForm(forms.ModelForm):
     class Meta:
         model = Map
-        fields = ("edit_status", "editors", "share_status", "owner")
+        fields = ("edit_status", "editors", "share_status", "owner", "group")
 
 
 class AnonymousMapPermissionsForm(forms.ModelForm):
@@ -110,3 +111,27 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ("username", "first_name", "last_name")
+
+
+class GroupMembersField(forms.ModelMultipleChoiceField):
+    def set_choices(self, choices):
+        iterator = self.iterator(self)
+        # Override queryset so to expose only selected choices:
+        # - we don't want a select with 100000 options
+        # - the select values will be used by the autocomplete widget to display
+        #   already existing members of the group
+        iterator.queryset = choices
+        self.choices = iterator
+
+
+class GroupForm(forms.ModelForm):
+    class Meta:
+        model = Group
+        fields = ["name", "members"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["members"].set_choices(self.initial["members"])
+        self.fields["members"].widget.attrs["hidden"] = "hidden"
+
+    members = GroupMembersField(queryset=User.objects.all())
