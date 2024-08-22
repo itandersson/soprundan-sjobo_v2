@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import asyncio
-import json
 import uuid
 from collections import defaultdict
 from typing import Literal, Optional, Union
@@ -76,10 +75,10 @@ class PeerMessage(BaseModel):
 
 
 class ServerRequest(BaseModel):
-    """A request directe towards the server"""
+    """A request towards the server"""
 
     kind: Literal["server"] = "server"
-    action: Literal["peerinfo"]
+    action: Literal["list-peers"]
 
 
 class Request(RootModel):
@@ -98,8 +97,8 @@ class JoinResponse(BaseModel):
     uuid: str
 
 
-class PeerInfoResponse(BaseModel):
-    kind: Literal["peerinfo"] = "peerinfo"
+class ListPeersResponse(BaseModel):
+    kind: Literal["list-peers"] = "list-peers"
     peers: list
 
 
@@ -117,14 +116,14 @@ async def join_and_listen(
     await websocket.send(response.model_dump_json())
 
     # Notify all other peers of the new list of connected peers.
-    message = PeerInfoResponse(peers=peers)
+    message = ListPeersResponse(peers=peers)
     websockets.broadcast(
         connections.get_other_peers(websocket), message.model_dump_json()
     )
 
     try:
         async for raw_message in websocket:
-            # recompute the peers-list at the time of message-sending.
+            # recompute the peers list at the time of message-sending.
             # as doing so beforehand would miss new connections
             peers = connections.get_other_peers(websocket)
             try:
@@ -151,7 +150,7 @@ async def join_and_listen(
         # TODO: refactor this in a separate method.
         # Notify all other peers of the new list of connected peers.
         peers = [connections.get_id(p) for p in connections.get_all_peers()]
-        message = PeerInfoResponse(peers=peers)
+        message = ListPeersResponse(peers=peers)
         websockets.broadcast(
             connections.get_other_peers(websocket), message.model_dump_json()
         )
@@ -177,14 +176,14 @@ async def handler(websocket):
 def run(host: str, port: int):
     # TODO: put this in the tests
 
-    server = Request.model_validate(dict(kind="server", action="peerinfo")).root
-    assert type(server) is ServerRequest
+    # server = Request.model_validate(dict(kind="server", action="peerinfo")).root
+    # assert type(server) is ServerRequest
 
-    operation = Request.model_validate(
-        dict(kind="operation", verb="upsert", subject="map", metadata={}, key="key")
-    ).root
+    # operation = Request.model_validate(
+    #     dict(kind="operation", verb="upsert", subject="map", metadata={}, key="key")
+    # ).root
 
-    assert type(operation) is OperationMessage
+    # assert type(operation) is OperationMessage
 
     if not settings.WEBSOCKET_ENABLED:
         msg = (

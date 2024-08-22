@@ -172,14 +172,18 @@ describe('Utils', function () {
 
     it('bullet points with bold and italic', function () {
       assert.equal(
-        Utils.toHTML('* First *point*\n* Second **point**\n* Last [[https://here.org|point]]'),
+        Utils.toHTML(
+          '* First *point*\n* Second **point**\n* Last [[https://here.org|point]]'
+        ),
         '<ul><li>First <em>point</em></li><li>Second <strong>point</strong></li><li>Last <a href="https://here.org" target="_blank">point</a></li></ul>'
       )
     })
 
     it('title followed by bullet points', function () {
       assert.equal(
-        Utils.toHTML('## Some title\n* First *point*\n* Second **point**\n* Last [[https://here.org|point]]'),
+        Utils.toHTML(
+          '## Some title\n* First *point*\n* Second **point**\n* Last [[https://here.org|point]]'
+        ),
         '<h4>Some title</h4><ul><li>First <em>point</em></li><li>Second <strong>point</strong></li><li>Last <a href="https://here.org" target="_blank">point</a></li></ul>'
       )
     })
@@ -654,6 +658,29 @@ describe('Utils', function () {
         Utils.parseNaiveDate('Thu, 04 Mar 2024 00:00:00 GMT+0300').toISOString(),
         '2024-03-03T00:00:00.000Z'
       )
+    })
+  })
+
+  describe('#isObject', () => {
+    it('should return true for objects', () => {
+      assert.equal(Utils.isObject({}), true)
+      assert.equal(Utils.isObject({ foo: 'bar' }), true)
+    })
+
+    it('should return false for Array', () => {
+      assert.equal(Utils.isObject([]), false)
+    })
+
+    it('should return false on null', () => {
+      assert.equal(Utils.isObject(null), false)
+    })
+
+    it('should return false on undefined', () => {
+      assert.equal(Utils.isObject(undefined), false)
+    })
+
+    it('should return false on string', () => {
+      assert.equal(Utils.isObject(''), false)
     })
   })
 })

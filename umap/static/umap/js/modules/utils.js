@@ -179,7 +179,7 @@ export function toHTML(r, options) {
 }
 
 export function isObject(what) {
-  return typeof what === 'object' && what !== null
+  return typeof what === 'object' && what !== null && !Array.isArray(what)
 }
 
 export function CopyJSON(geojson) {
