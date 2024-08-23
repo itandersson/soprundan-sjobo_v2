@@ -1,0 +1,858 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<gpx version="1.1" creator="OsmAnd 4.8.6" xmlns="http://www.topografix.com/GPX/1/1" xmlns:osmand="https://osmand.net" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Markers_2024-08-18</name>
+  </metadata>
+  <wpt lat="55.6316301" lon="13.7066067">
+    <time>2024-08-18T11:33:46Z</time>
+    <name>Norregatan (Lövestad), Sjöbo</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.636779" lon="13.7071749">
+    <time>2024-08-18T11:33:27Z</time>
+    <name>Föreningsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6334951" lon="13.7013484">
+    <time>2024-04-28T08:59:46Z</time>
+    <name>Planteringsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6346479" lon="13.7031386">
+    <time>2024-04-28T09:03:16Z</time>
+    <name>Nya Torg, Sjöbo</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6348286" lon="13.7036917">
+    <time>2024-04-28T09:04:06Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6350863" lon="13.7031688">
+    <time>2024-04-28T09:05:15Z</time>
+    <name>Nya Torg, Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.635074" lon="13.7066563">
+    <time>2024-04-28T09:08:34Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6351928" lon="13.709474">
+    <time>2024-04-28T09:10:59Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6375798" lon="13.7162578">
+    <time>2024-04-28T11:00:01Z</time>
+    <name>Fackgatan 25, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6366792" lon="13.7191265">
+    <time>2024-04-28T11:06:19Z</time>
+    <name>Orkestergatan 14, Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6356936" lon="13.7171425">
+    <time>2024-04-28T11:09:44Z</time>
+    <name>Mäster Nilsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6356578" lon="13.7147243">
+    <time>2024-04-28T11:11:47Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6335361" lon="13.710815">
+    <time>2024-04-28T11:19:23Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6312845" lon="13.7110532">
+    <time>2024-04-28T11:22:55Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6305573" lon="13.708301">
+    <time>2024-04-28T11:36:03Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6305423" lon="13.7079254">
+    <time>2024-04-28T11:36:34Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6304407" lon="13.7075951">
+    <time>2024-04-28T11:37:03Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6311053" lon="13.7060196">
+    <time>2024-04-28T11:39:03Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6312852" lon="13.7055621">
+    <time>2024-04-28T11:39:45Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6314494" lon="13.7056453">
+    <time>2024-04-28T11:40:25Z</time>
+    <name>Västergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6315328" lon="13.7056063">
+    <time>2024-04-28T11:41:06Z</time>
+    <name>Västergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.631693" lon="13.7054837">
+    <time>2024-04-28T11:41:49Z</time>
+    <name>Västergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6322102" lon="13.7055855">
+    <time>2024-04-28T11:43:35Z</time>
+    <name>Strömgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.632671" lon="13.7041381">
+    <time>2024-04-28T11:45:13Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6332697" lon="13.7035357">
+    <time>2024-04-28T11:46:23Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6342548" lon="13.6864923">
+    <time>2024-04-28T17:21:27Z</time>
+    <name>Planteringsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6346177" lon="13.6838096">
+    <time>2024-04-28T17:24:16Z</time>
+    <name>Planteringsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6356607" lon="13.6798812">
+    <time>2024-04-28T17:42:25Z</time>
+    <name>Brytjärnsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6338997" lon="13.6939574">
+    <time>2024-04-28T17:54:16Z</time>
+    <name>Planteringsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6336154" lon="13.6976369">
+    <time>2024-04-28T17:57:16Z</time>
+    <name>Planteringsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6319276" lon="13.6993145">
+    <time>2024-04-29T05:32:43Z</time>
+    <name>Västergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6317823" lon="13.7019538">
+    <time>2024-04-29T05:36:35Z</time>
+    <name>Västergatan 17, Sjöbo</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6317476" lon="13.7028146">
+    <time>2024-04-29T05:38:46Z</time>
+    <name>Västergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6317904" lon="13.7030008">
+    <time>2024-04-29T05:41:46Z</time>
+    <name>Västergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6318004" lon="13.7038092">
+    <time>2024-04-29T05:43:15Z</time>
+    <name>Västergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6315819" lon="13.7049396">
+    <time>2024-04-29T05:45:38Z</time>
+    <name>Södergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6310948" lon="13.7053381">
+    <time>2024-04-29T05:47:05Z</time>
+    <name>Södergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6313426" lon="13.7061315">
+    <time>2024-04-29T05:54:40Z</time>
+    <name>Östergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6312411" lon="13.7059239">
+    <time>2024-04-29T05:57:10Z</time>
+    <name>Östergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.631389" lon="13.7063306">
+    <time>2024-04-29T06:00:14Z</time>
+    <name>Östergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6294449" lon="13.7103457">
+    <time>2024-04-29T06:16:59Z</time>
+    <name>Östergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6276247" lon="13.7120049">
+    <time>2024-04-29T06:24:39Z</time>
+    <name>Östra Idrottsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6263872" lon="13.7124762">
+    <time>2024-04-29T06:26:39Z</time>
+    <name>Båggränd, Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6266148" lon="13.707003">
+    <time>2024-04-29T06:31:10Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6306085" lon="13.7013957">
+    <time>2024-04-29T07:50:45Z</time>
+    <name>Bussgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6305427" lon="13.7017096">
+    <time>2024-04-29T07:51:15Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6306446" lon="13.7015596">
+    <time>2024-04-29T07:51:38Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6295676" lon="13.7048665">
+    <time>2024-04-29T07:56:21Z</time>
+    <name>Södergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6277934" lon="13.704774">
+    <time>2024-04-29T07:58:26Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.625753" lon="13.7049695">
+    <time>2024-04-29T08:00:44Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6272805" lon="13.6970857">
+    <time>2024-04-29T08:11:05Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6266361" lon="13.6934159">
+    <time>2024-04-29T08:15:10Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6278644" lon="13.6939088">
+    <time>2024-04-29T08:21:44Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6408163" lon="13.6921151">
+    <time>2024-04-29T08:31:24Z</time>
+    <name>Ommavägen, Sjöbo</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6428803" lon="13.6951687">
+    <time>2024-04-29T08:36:28Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6445675" lon="13.7008571">
+    <time>2024-04-29T08:42:17Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6428055" lon="13.7005712">
+    <time>2024-04-29T08:46:59Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6404837" lon="13.7012261">
+    <time>2024-04-29T08:51:09Z</time>
+    <name>Nära Majorsgränd, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6399929" lon="13.7012472">
+    <time>2024-04-29T08:52:55Z</time>
+    <name>Nära Majorsgränd, Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6399093" lon="13.6998675">
+    <time>2024-04-29T08:56:21Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6382805" lon="13.700664">
+    <time>2024-04-29T08:58:57Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6388477" lon="13.7010361">
+    <time>2024-04-29T09:00:52Z</time>
+    <name>Nära Riktaregränd, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6370427" lon="13.6991743">
+    <time>2024-04-29T09:08:09Z</time>
+    <name>Urmakaregränd 12, Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6360144" lon="13.6994902">
+    <time>2024-04-29T09:09:47Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6334951" lon="13.7013484">
+    <time>2024-04-29T09:36:26Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6342085" lon="13.7008606">
+    <time>2024-04-29T09:38:42Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6376776" lon="13.7038276">
+    <time>2024-04-29T11:07:55Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6388182" lon="13.7044774">
+    <time>2024-04-29T11:09:29Z</time>
+    <name>Gökgränd, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6427474" lon="13.7100514">
+    <time>2024-04-30T06:05:54Z</time>
+    <name>Forskaregatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6416681" lon="13.7129702">
+    <time>2024-04-30T06:10:09Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6396366" lon="13.7160267">
+    <time>2024-04-30T06:14:42Z</time>
+    <name>Grönsaksvägen (Sandåkra), Sjöbo</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6387464" lon="13.7104512">
+    <time>2024-04-30T06:25:38Z</time>
+    <name>Allégatan (Sandåkra), Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6398008" lon="13.731351">
+    <time>2024-04-30T06:36:46Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6427527" lon="13.7328974">
+    <time>2024-04-30T06:39:59Z</time>
+    <name>Läxgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.640486" lon="13.7302335">
+    <time>2024-04-30T06:44:36Z</time>
+    <name>Fysikgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6403074" lon="13.7101397">
+    <time>2024-04-30T08:44:00Z</time>
+    <name>Linnégatan (Sandåkra), Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.634694" lon="13.7189191">
+    <time>2024-04-30T11:02:28Z</time>
+    <name>Skolgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6323881" lon="13.7193234">
+    <time>2024-04-30T11:05:28Z</time>
+    <name>Rättsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6294261" lon="13.7180693">
+    <time>2024-04-30T11:08:59Z</time>
+    <name>Badgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.636779" lon="13.707175">
+    <time>2024-04-30T11:26:04Z</time>
+    <name>Föreningsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6325209" lon="13.7086129">
+    <time>2024-04-30T11:53:50Z</time>
+    <name>Domaregatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6320984" lon="13.7069306">
+    <time>2024-04-30T11:56:31Z</time>
+    <name>Trädgårdsgatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6331604" lon="13.706429">
+    <time>2024-04-30T11:58:22Z</time>
+    <name>Hyregatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6345146" lon="13.7065797">
+    <time>2024-04-30T12:01:55Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6352596" lon="13.7066875">
+    <time>2024-04-30T12:03:51Z</time>
+    <name>Norregatan (Lövestad), Sjöbo</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6405255" lon="13.7056125">
+    <time>2024-04-30T12:11:25Z</time>
+    <name>Åsumsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6385123" lon="13.6805595">
+    <time>2024-04-30T12:47:03Z</time>
+    <name>Reningsverksvägen, Sjöbo</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6397495" lon="13.695671">
+    <time>2024-05-02T13:11:19Z</time>
+    <name>Ryttmästaregränd, Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6369154" lon="13.6955389">
+    <time>2024-05-02T13:16:13Z</time>
+    <name>Industrigatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6274934" lon="13.7102773">
+    <time>2024-05-04T09:48:15Z</time>
+    <name>Östra Idrottsgatan, Sjöbo (2)</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6276635" lon="13.7089594">
+    <time>2024-05-04T09:48:23Z</time>
+    <name>Östra Idrottsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6338116" lon="13.7015278">
+    <time>2024-05-05T11:19:37Z</time>
+    <name>Planteringsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.633932" lon="13.7019657">
+    <time>2024-05-05T11:20:29Z</time>
+    <name>Idegatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6313073" lon="13.6989668">
+    <time>2024-05-05T14:17:02Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6299141" lon="13.6883967">
+    <time>2024-05-06T09:39:12Z</time>
+    <name>Poppelvägen, Sjöbo</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6286931" lon="13.6914987">
+    <time>2024-05-06T09:42:26Z</time>
+    <name>Violgränd, Sjöbo</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6292495" lon="13.6921424">
+    <time>2024-05-06T09:45:24Z</time>
+    <name>Anemongränd, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6363882" lon="13.6743398">
+    <time>2024-05-07T05:57:18Z</time>
+    <name>Brytjärnsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.636786" lon="13.6697166">
+    <time>2024-05-07T06:01:20Z</time>
+    <name>Brytjärnsgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6373881" lon="13.6723098">
+    <time>2024-05-07T06:11:08Z</time>
+    <name>Kvistvägen (Sjöbo sommarby och Svansjö sommarby), Sjöbo</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6382386" lon="13.6722431">
+    <time>2024-05-07T06:14:01Z</time>
+    <name>Rotgatan (Sjöbo sommarby och Svansjö sommarby), Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6377035" lon="13.7275332">
+    <time>2024-05-07T08:30:46Z</time>
+    <name>Teknikergatan (Lillås gård) 34, Sjöbo</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6377829" lon="13.7240408">
+    <time>2024-05-07T08:37:31Z</time>
+    <name>Basgatan 3, Sjöbo</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6365602" lon="13.7289681">
+    <time>2024-05-07T08:42:22Z</time>
+    <name>Norrskensgatan (Grimstofta), Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6349799" lon="13.7256677">
+    <time>2024-05-07T08:50:46Z</time>
+    <name>Galaxgatan (Grimstofta) 17, Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6347463" lon="13.7219292">
+    <time>2024-05-07T08:54:00Z</time>
+    <name>Långdansvägen (Grimstofta), Sjöbo</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6370563" lon="13.7215592">
+    <time>2024-05-07T08:56:25Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6383472" lon="13.7205684">
+    <time>2024-05-07T09:00:13Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6321826" lon="13.7218276">
+    <time>2024-05-07T09:03:54Z</time>
+    <name>Långdansvägen (Grimstofta), Sjöbo</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6311459" lon="13.7222955">
+    <time>2024-05-07T09:05:47Z</time>
+    <name>Manetgatan (Tofta), Sjöbo</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.639236" lon="13.7180931">
+    <time>2024-05-07T09:31:42Z</time>
+    <name>Folkdansgatan (Lillås gård), Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6360144" lon="13.6994902">
+    <time>2024-05-09T11:08:12Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6360145" lon="13.6994902">
+    <time>2024-05-09T11:10:03Z</time>
+    <name>Möllers Mosse</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6356801" lon="13.6999037">
+    <time>2024-05-10T12:11:25Z</time>
+    <name>Törnedalsgatan 52E, Sjöbo</name>
+    <extensions>
+      <osmand:color>#73b825</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6354177" lon="13.7000187">
+    <time>2024-05-10T12:11:59Z</time>
+    <name>Min position</name>
+    <extensions>
+      <osmand:color>#ff9800</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6353613" lon="13.7004879">
+    <time>2024-05-10T12:12:30Z</time>
+    <name>Törnedalsgatan 52E, Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6348826" lon="13.7003592">
+    <time>2024-05-15T09:01:00Z</time>
+    <name>Törnedalsgatan 50C, Sjöbo</name>
+    <extensions>
+      <osmand:color>#ab47bc</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6247343" lon="13.7211775">
+    <time>2024-06-04T13:22:40Z</time>
+    <name>Östergatan (Vollsjö), Sjöbo</name>
+    <extensions>
+      <osmand:color>#2196f3</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6410261" lon="13.7010465">
+    <time>2024-06-23T11:09:30Z</time>
+    <name>Blåbärsgränd 13, Sjöbo</name>
+    <extensions>
+      <osmand:color>#e53935</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6414442" lon="13.7002145">
+    <time>2024-06-23T11:11:41Z</time>
+    <name>Idunsgränd 16, Sjöbo</name>
+    <extensions>
+      <osmand:color>#fdd835</osmand:color>
+    </extensions>
+  </wpt>
+  <wpt lat="55.6281204" lon="13.6955495">
+    <time>2024-07-22T08:44:04Z</time>
+    <name>Nära Terrassgatan, Sjöbo</name>
+    <extensions>
+      <osmand:color>#26a69a</osmand:color>
+    </extensions>
+  </wpt>
+  <extensions>
+    <osmand:points_groups>
+      <group name="" color="#73b825" />
+    </osmand:points_groups>
+  </extensions>
+</gpx>
